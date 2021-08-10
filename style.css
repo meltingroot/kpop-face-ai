@@ -76,7 +76,7 @@ body {
 }
 
 .drag-text img {
-  width: 30%;
+  width: 20%;
   margin-bottom: 20px;
 }
 
@@ -122,31 +122,56 @@ body {
 }
 
 .navbar {
-  padding-top: 15%;
-  background-color: #ff90aa;
+  background-color: #ffffff;
 }
 
 .navbar-toggler {
-  border-color: #ff90aa !important;
+  border-color: #ffffff !important;
 }
 
 .navbar-brand {
-  color: #ffffff !important;
+  color: #000000 !important;
   font-weight: bolder;
+  font-size: 1rem;
 } 
-
-.view-div {
-  padding: 10px;
-}
-
-.sub-title {
-  text-align: center;
-  color: #555555;
-  margin-top: 20px;
-}
 
 .file-upload {
   background-color: #fff0f0;
   border-radius: 10px;
   margin: 10px;
+}
+
+.marquee {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+  font-family: -webkit-pictograph;
+  letter-spacing: -0.2rem;
+  font-size: 3rem;
+}
+
+.mgT20 {
+  margin-top: 20px;
+}
+
+.bts-bg {
+  background-color: #000;
+  color: white;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+}
+
+.main-image img{
+  width: 100%;
+}
+
+.pd20 {
+  padding: 20px;
+}
+
+.title {
+  font-size: 4rem;
+}
+
+.mgT-1 {
+  margin-top: -1rem;
 }

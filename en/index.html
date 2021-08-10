@@ -13,7 +13,8 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">BTS FACE AI</a>
+                
+                <div class="navbar-brand" href="#"><span class="bts-bg">BTS</span>FaceAI</div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -35,11 +36,22 @@
                 </div>
             </div>
         </nav>
-        <div class="view-div">
-            <div class="sub-title"> 
-                <img src="../img/Robot.png">
-                <h2>Which <strong>BTS member</strong> do I look like? Use this AI-based test to see which member you look like!</h2>
+        <div>
+            <div class="title pd20">
+                <div><span  class="bts-bg">BTS</span></div>
+                <div class="mgT-1">FaceAI</div>
+                
+                <div class="main-image">
+                    <a href="https://youtu.be/CuklIb9d3fI">
+                        <img id="main-image-1" src="../img/1.gif">
+                        <img id="main-image-2" src="../img/2.gif"  style="display:none;">
+                        <img id="main-image-3" src="../img/3.gif"  style="display:none;">
+                        <img id="main-image-4" src="../img/4.gif"  style="display:none;">
+                    <a>
+                </div>
             </div>
+
+            <MARQUEE behavior="scroll" class="marquee">🤖 "Which <strong>BTS member</strong> do I look like? Use this AI-based test to see which member you look like!"</MARQUEE >
 
             <div class="file-upload">    
                 <div class="image-upload-wrap">
@@ -180,6 +192,23 @@
                 $('.image-upload-wrap').bind('dragleave', function () {
                     $('.image-upload-wrap').removeClass('image-dropping');
             });
+
+            window.onload = function(){
+                showRotate();
+            }
+
+            var _imageCnt = 1;
+            function showRotate() {
+                $(".main-image img").hide();
+                if(_imageCnt < 5) {
+                    $("#main-image-"+_imageCnt).show();
+                    _imageCnt++; 
+                    setTimeout("showRotate()", 2000);
+                } else {
+                    _imageCnt = 1;
+                    showRotate();
+                }
+            }
         </script>
 
     </body>
