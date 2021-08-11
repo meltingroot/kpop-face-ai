@@ -4,7 +4,7 @@ body {
 }
   
 .file-upload {
-  background-color: #ffffff;
+  background-color: #f6f7fa;
   margin: 0 auto;
   padding: 20px;
 }
@@ -53,16 +53,15 @@ body {
 }
 
 .image-upload-wrap {
-  background-color: #ffffff;
-  border: 2px solid #ddd0d0;
+  background-color: #D2E3FC;
   border-radius: 10px;
   position: relative;
+  color:#1967D2
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-  background-color: #ccc0c0;
-  border: 4px dashed #ffffff;
+  background-color: #8AB4F8;
 }
 
 .image-title-wrap {
@@ -84,12 +83,11 @@ body {
 .drag-text h3 {
   font-weight: 100;
   text-transform: uppercase;
-  color: #999090;
 }
 
 .file-upload-image {
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 60%;
+  max-width: 60%;
   margin: auto;
   padding: 20px;
 }
@@ -135,22 +133,11 @@ body {
   font-size: 1rem;
 } 
 
-.file-upload {
-  background-color: #fff0f0;
-  border-radius: 10px;
-  margin: 10px;
-}
-
-.marquee {
-  border-top: 1px solid silver;
-  border-bottom: 1px solid silver;
-  font-family: -webkit-pictograph;
-  letter-spacing: -0.2rem;
-  font-size: 3rem;
-}
-
 .mgT20 {
   margin-top: 20px;
+}
+.mgT10 {
+  margin-top: 10px;
 }
 
 .bts-bg {
@@ -168,10 +155,22 @@ body {
   padding: 20px;
 }
 
+.pdL20 {
+  padding-left: 20px;
+}
+
+.pdR20 {
+  padding-right: 20px;
+}
+
 .title {
   font-size: 4rem;
 }
 
 .mgT-1 {
   margin-top: -1rem;
+}
+
+.hide {
+  display: hidden;
 }

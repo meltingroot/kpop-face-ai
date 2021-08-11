@@ -37,21 +37,20 @@
             </div>
         </nav>
         <div>
-            <div class="title pd20">
+            <div class="title pdL20 mgT20">
                 <div><span  class="bts-bg">BTS</span></div>
                 <div class="mgT-1">FaceAI</div>
-                
-                <div class="main-image">
-                    <a href="https://youtu.be/CuklIb9d3fI">
-                        <img id="main-image-1" src="../img/1.gif">
-                        <img id="main-image-2" src="../img/2.gif"  style="display:none;">
-                        <img id="main-image-3" src="../img/3.gif"  style="display:none;">
-                        <img id="main-image-4" src="../img/4.gif"  style="display:none;">
-                    <a>
-                </div>
             </div>
 
-            <MARQUEE behavior="scroll" class="marquee">🤖 "Which <strong>BTS member</strong> do I look like? Use this AI-based test to see which member you look like!"</MARQUEE >
+            <div class="main-image pd20">
+                <a href="https://youtu.be/CuklIb9d3fI">
+                    <img id="main-image-1" src="../img/1.gif">
+                    <img id="main-image-2" src="../img/2.gif"  style="display:none;">
+                    <img id="main-image-3" src="../img/3.gif"  style="display:none;">
+                    <img id="main-image-4" src="../img/4.gif"  style="display:none;">
+                <a>
+            </div>
+            <div class="pdL20 pdR20">"Which <strong>BTS member</strong> do I look like? Use this AI-based test to see which member you look like!"</div> 
 
             <div class="file-upload">    
                 <div class="image-upload-wrap">
@@ -64,15 +63,32 @@
                 <div class="file-upload-content">
                     <img id="face-image" class="file-upload-image" src="#" alt="your image" />
                     <div class="image-title-wrap">
-                    <p class="result-message"></p>
-
-                    <div id="label-container"></div>
-
-                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                        <p class="result-message"></p>
+                        <div id="label-container"></div>
+                    </div>
+                </div>
+                <div class="bar-graph-div" style="text">
+                    <div class="bar-graph-holder" style="width:100%; height:2.5rem; line-height:2.5rem;">
+                        <div class="bar-graph-label" style="width:30% ; float:left">title</div>
+                        <div class="bar-graph-container" style="background-color: #FFECE2; width:70%; height:100%; float:left; border-radius:5px;">
+                            <div class="graph-body" style="background-color: #E67701; width:60%; height:100%; border-radius:5px;">
+                                <span class="value-label" style="color:#ffffff; float:right; padding-right:0.5rem">60%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bar-graph-holder mgT10" style="width:100%; height:2.5rem; line-height:2.5rem;">
+                        <div class="bar-graph-label" style="width:30% ; float:left">title</div>
+                        <div class="bar-graph-container" style="background-color: #FFECE2; width:70%; height:100%; float:left; border-radius:5px;">
+                            <div class="graph-body" style="background-color: #E67701; width:60%; height:100%; border-radius:5px;">
+                                <span class="value-label" style="color:#ffffff; float:right; padding-right:0.5rem">60%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="webcam-container"></div>
+
+
         </div>
 
 
@@ -150,11 +166,34 @@
                 $(".result-message").html(resultMessage);
 
 
+
+                var grapfColorArr = [
+                      {"background-color":"#FFECE2", "graph-color":"#E67701"}
+                    , {"background-color":"#FFE9EC", "graph-color":"#D84C6F"}
+                    , {"background-color":"#F1F0FF", "graph-color":"#794AEF"}
+                    , {"background-color":"#D2E3FC", "graph-color":"#1967D2"}
+                    , {"background-color":"#FFECE2", "graph-color":"#E67701"}
+                    , {"background-color":"#FFE9EC", "graph-color":"#D84C6F"}
+                    , {"background-color":"#F1F0FF", "graph-color":"#794AEF"}
+                ]
+
                 for (let i = 0; i < maxPredictions; i++) {
                     const classPrediction =
                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                     labelContainer.childNodes[i].innerHTML = classPrediction;
+
+
+
+
                 }
+
+
+
+
+
+
+
+
             }
         </script>
         <script type="text/javascript">
@@ -176,16 +215,9 @@
                     init().then(function(){
                         predict();
                     });
-                } else {
-                    removeUpload();
                 }
             }
             
-            function removeUpload() {
-                $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-                $('.file-upload-content').hide();
-                $('.image-upload-wrap').show();
-            }
             $('.image-upload-wrap').bind('dragover', function () {
                     $('.image-upload-wrap').addClass('image-dropping');
                 });
