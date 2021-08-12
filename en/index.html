@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="../style.css">
 	</head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <div class="container-fluid">
                 
                 <div class="navbar-brand" href="#"><span class="bts-bg">BTS</span>FaceAI</div>
@@ -36,28 +36,27 @@
                 </div>
             </div>
         </nav>
-        <div>
-            <div class="title pdL20 mgT20">
-                <div><span  class="bts-bg">BTS</span></div>
-                <div class="mgT-1">FaceAI</div>
+        <div style="margin-top: 65px;">
+            <div class="main-image">
+                <div class="title width100">
+                    <div>Which <strong>BTS member</strong> do I look like?</div>
+                    <div>Use this AI-based test to see </div>
+                    <div>which member you look like!</div>
+                    <div class="start-button" onclick="fn_start();">START</div>
+                </div>
+                <div class="black-filter" style="width:100%;height:100%"></div>
+                <img src="../img/1.jpg">
             </div>
-
-            <div class="main-image pd20">
-                <a href="https://youtu.be/CuklIb9d3fI">
-                    <img id="main-image-1" src="../img/1.gif">
-                    <img id="main-image-2" src="../img/2.gif"  style="display:none;">
-                    <img id="main-image-3" src="../img/3.gif"  style="display:none;">
-                    <img id="main-image-4" src="../img/4.gif"  style="display:none;">
-                <a>
+            <div class="mid-image">
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CuklIb9d3fI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
-            <div class="pdL20 pdR20">"Which <strong>BTS member</strong> do I look like? Use this AI-based test to see which member you look like!"</div> 
-
             <div class="file-upload">    
                 <div class="image-upload-wrap">
                     <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
                     <div class="drag-text">
-                        <img src="../img/upload.svg">
-                        <h3>Drag and drop a file or select add Image</h3>
+                        <div>SELECT ADD IMAGE</div>
                     </div>
                 </div>
                 <div class="file-upload-content">
@@ -87,6 +86,14 @@
                 </div>
             </div>
             <div id="webcam-container"></div>
+            <div class="bottom-text">
+                <div>
+                    <div>
+                        <span  class="bts-bottom-text">BTS</span>
+                        <span class="mgT-1">FaceAI</span>
+                    </div>
+                </div>
+            </div>
 
 
         </div>
@@ -225,10 +232,7 @@
                     $('.image-upload-wrap').removeClass('image-dropping');
             });
 
-            window.onload = function(){
-                showRotate();
-            }
-
+            /*
             var _imageCnt = 1;
             function showRotate() {
                 $(".main-image img").hide();
@@ -240,6 +244,11 @@
                     _imageCnt = 1;
                     showRotate();
                 }
+            }
+            */
+
+            function fn_start() {
+                $(window).scrollTop($(".file-upload").offset().top-65);
             }
         </script>
 
