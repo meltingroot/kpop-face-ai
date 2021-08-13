@@ -158,10 +158,7 @@
                 // sort
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
                 
-                console.log("prediction", prediction);
                 $(".result-message").html(prediction[0].className);
-
-
 
                 var graphColorArr = [
                       {"backgroundColor":"#FFECE2", "graphColor":"#E67701"}
@@ -206,6 +203,10 @@
                         $('.file-upload-content').show();
                         $(".image-analying-message").show();
                         $('.image-title').html(input.files[0].name);
+
+                        $("body").animate({
+                            scrollTop: $("#face-image").offset().top-60
+                        }, 500);
                     };
             
                     reader.readAsDataURL(input.files[0]);
@@ -225,7 +226,11 @@
             });
 
             function fn_start() {
-                $(window).scrollTop($(".file-upload").offset().top-60);
+                //$(window).scrollTop($(".file-upload").offset().top-60);
+
+                $("body").animate({
+                    scrollTop: $(".file-upload").offset().top-60
+                }, 500);
             }
 
             function fn_retry() {
