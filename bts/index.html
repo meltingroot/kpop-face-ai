@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>BTS FACE AI TEST</title>
+		<title>K-POP FACE AI</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,14 +45,26 @@
                     <div class="start-button" onclick="fn_start();">START</div>
                 </div>
                 <div class="black-filter" style="width:100%;height:100%"></div>
-                <img src="../img/1.jpg">
+                <img src="../img/bts.jpg">
             </div>
             <div class="mid-image">
                 <div class="video-container">
                     <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CuklIb9d3fI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/WMweEpGlu_U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/gdZLi9oWNZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
             </div>
-            <div class="file-upload">    
+            <div class="file-upload">
+                <div class="caution-message">
+                    <div class="caution-message-title">DON'T WORRY</div>
+                    <div class="caution-message-main">YOUR PICTURE</div>
+                    <div class="caution-message-main">IS NOT SAVED ANYWHERE</div>
+                </div>
+                
                 <div class="image-upload-wrap">
                     <input class="file-upload-input" type='file' onchange="readURL(this);" accept="image/*" />
                     <div class="drag-text">
@@ -61,41 +73,42 @@
                 </div>
                 <div class="file-upload-content">
                     <img id="face-image" class="file-upload-image" src="#" alt="your image" />
-                    <div class="image-title-wrap">
+                    <div class="image-analying-message" style="display:none;">
+                        <p>AI is analyzing your picture</p>
+                        <img src="../img/loading.gif" style="width:3rem">
+                    </div>
+                    <div class="image-title-wrap" style="display:none;">
+                        <div>The member who looks</div>
+                        <div>the most like you is</div>
                         <p class="result-message"></p>
                         <div id="label-container"></div>
                     </div>
+                    <div class="retry-button" onclick="fn_retry();" style="display:none;">RETRY WITH ANOTHER PHOTO</div>
                 </div>
-                <div class="bar-graph-div" style="text">
-                    <div class="bar-graph-holder" style="width:100%; height:2.5rem; line-height:2.5rem;">
-                        <div class="bar-graph-label" style="width:30% ; float:left">title</div>
-                        <div class="bar-graph-container" style="background-color: #FFECE2; width:70%; height:100%; float:left; border-radius:5px;">
-                            <div class="graph-body" style="background-color: #E67701; width:60%; height:100%; border-radius:5px;">
-                                <span class="value-label" style="color:#ffffff; float:right; padding-right:0.5rem">60%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bar-graph-holder mgT10" style="width:100%; height:2.5rem; line-height:2.5rem;">
-                        <div class="bar-graph-label" style="width:30% ; float:left">title</div>
-                        <div class="bar-graph-container" style="background-color: #FFECE2; width:70%; height:100%; float:left; border-radius:5px;">
-                            <div class="graph-body" style="background-color: #E67701; width:60%; height:100%; border-radius:5px;">
-                                <span class="value-label" style="color:#ffffff; float:right; padding-right:0.5rem">60%</span>
+                <div id="clone-bar-graph"  style="display:none;">
+                    <div class="bar-graph-div">
+                        <div class="bar-graph-holder">
+                            <div class="bar-graph-label">title</div>
+                            <div class="bar-graph-container">
+                                <div class="graph-body">
+                                    <span class="value-label">percent</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="webcam-container"></div>
-            <div class="bottom-text">
-                <div>
-                    <div>
-                        <span  class="bts-bottom-text">BTS</span>
-                        <span class="mgT-1">FaceAI</span>
-                    </div>
+            <div class="footer">
+                <div class="footer-title">
+                    <p>TRY OTHER K-POP FaceAI</p>
+                </div>
+                <div class="footer-menu">
+                    <div>BLACKPINK</div>
+                    <div>ITZY</div>
+                    <div>EXO</div>
+                    <div>Got7</div>
                 </div>
             </div>
-
-
         </div>
 
 
@@ -145,62 +158,40 @@
                 // sort
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
                 
-                var resultMessage = "";
-                switch (prediction[0].className) {
-                    case "정국" : 
-                        resultMessage = "JUNGKOOK";
-                        break;
-                    case "뷔" : 
-                        resultMessage = "V";
-                        break;
-                    case "슈가" : 
-                        resultMessage = "SUGA";
-                        break;
-                    case "제이홉" : 
-                        resultMessage = "J-HOPE";
-                        break;
-                    case "지민" : 
-                        resultMessage = "JIMIN";
-                        break;
-                    case "진" : 
-                        resultMessage = "JIN";
-                        break;
-                    case "RM" : 
-                        resultMessage = "RM";
-                        break;
-                    default : resultMessage = "";
-                }
-                $(".result-message").html(resultMessage);
+                console.log("prediction", prediction);
+                $(".result-message").html(prediction[0].className);
 
 
 
-                var grapfColorArr = [
-                      {"background-color":"#FFECE2", "graph-color":"#E67701"}
-                    , {"background-color":"#FFE9EC", "graph-color":"#D84C6F"}
-                    , {"background-color":"#F1F0FF", "graph-color":"#794AEF"}
-                    , {"background-color":"#D2E3FC", "graph-color":"#1967D2"}
-                    , {"background-color":"#FFECE2", "graph-color":"#E67701"}
-                    , {"background-color":"#FFE9EC", "graph-color":"#D84C6F"}
-                    , {"background-color":"#F1F0FF", "graph-color":"#794AEF"}
+                var graphColorArr = [
+                      {"backgroundColor":"#FFECE2", "graphColor":"#E67701"}
+                    , {"backgroundColor":"#FFE9EC", "graphColor":"#D84C6F"}
+                    , {"backgroundColor":"#F1F0FF", "graphColor":"#794AEF"}
+                    , {"backgroundColor":"#D2E3FC", "graphColor":"#1967D2"}
+                    , {"backgroundColor":"#FFECE2", "graphColor":"#E67701"}
+                    , {"backgroundColor":"#FFE9EC", "graphColor":"#D84C6F"}
+                    , {"backgroundColor":"#F1F0FF", "graphColor":"#794AEF"}
                 ]
 
                 for (let i = 0; i < maxPredictions; i++) {
+                    /*
                     const classPrediction =
                         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                     labelContainer.childNodes[i].innerHTML = classPrediction;
-
-
-
-
+                    */
+                    var graphPercent = prediction[i].probability.toFixed(2) * 100 + "%";
+                    var cloneGraph = $("#clone-bar-graph").find(".bar-graph-div").clone();
+                    $(cloneGraph).find(".bar-graph-label").text(prediction[i].className);
+                    $(cloneGraph).find(".bar-graph-container").css("background-color", graphColorArr[i].backgroundColor);
+                    $(cloneGraph).find(".graph-body").css("background-color", graphColorArr[i].graphColor);
+                    $(cloneGraph).find(".graph-body").css("width", graphPercent);
+                    $(cloneGraph).find(".value-label").text(graphPercent);
+                    $("#label-container").append(cloneGraph);
                 }
 
-
-
-
-
-
-
-
+                $(".image-title-wrap").show();
+                $(".retry-button").show();
+                $(".image-analying-message").hide();
             }
         </script>
         <script type="text/javascript">
@@ -212,7 +203,8 @@
                     reader.onload = function(e) {
                         $('.image-upload-wrap').hide();
                         $('.file-upload-image').attr('src', e.target.result);
-                        $('.file-upload-content').show();            
+                        $('.file-upload-content').show();
+                        $(".image-analying-message").show();
                         $('.image-title').html(input.files[0].name);
                     };
             
@@ -232,23 +224,12 @@
                     $('.image-upload-wrap').removeClass('image-dropping');
             });
 
-            /*
-            var _imageCnt = 1;
-            function showRotate() {
-                $(".main-image img").hide();
-                if(_imageCnt < 5) {
-                    $("#main-image-"+_imageCnt).show();
-                    _imageCnt++; 
-                    setTimeout("showRotate()", 2000);
-                } else {
-                    _imageCnt = 1;
-                    showRotate();
-                }
-            }
-            */
-
             function fn_start() {
-                $(window).scrollTop($(".file-upload").offset().top-65);
+                $(window).scrollTop($(".file-upload").offset().top-60);
+            }
+
+            function fn_retry() {
+                window.location.reload();
             }
         </script>
 
